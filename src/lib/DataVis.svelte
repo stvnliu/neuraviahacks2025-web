@@ -5,6 +5,7 @@
 		x: string;
 		y: number;
 	};
+	let completedDataCollection = $state(false);
 	type Data = {
 		data: LineGraphPoint[];
 	};
@@ -63,5 +64,28 @@
 
 <div class="datavis-tool">
 	<p class="dashboard-title">My data</p>
-	<canvas id="dashboard"></canvas>
+	{#if !completedDataCollection}
+		<div>
+			<p>We need some more info.</p>
+			<form
+				onsubmit={(formData) => {
+					formData;
+				}}
+			>
+				<label for="fname">First name: </label><br />
+				<input type="text" id="fname" name="fname" /><br />
+				<label for="lname">Last name: </label><br />
+				<input type="text" id="lname" name="lname" />
+				<label for="fname">Age: </label><br />
+				<input type="number" id="age" name="age" /><br />
+				<label for="lname">Height (m): </label><br />
+				<input type="text" id="height" name="height" />
+				<label for="fname">Weight (kg): </label><br />
+				<input type="text" id="weight" name="weight" />
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+	{:else}
+		<canvas id="dashboard"></canvas>
+	{/if}
 </div>
