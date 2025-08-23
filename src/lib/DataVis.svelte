@@ -70,50 +70,58 @@
 	{#if !completedDataCollection}
 		<div>
 			<p>We need some more info.</p>
-			<form
-				action={`${backend}/data`}
-				onsubmit={async (event) => {
-					event.preventDefault();
-					const form = event.currentTarget;
-					const formData = new FormData(form);
-					const plainObject = Object.fromEntries(formData.entries());
-					const body = JSON.stringify(plainObject);
-					console.log(body);
-					const parsedBody: TimeSeriesBMI = { 
-						fname: plainObject.fname as string, 
-						lname: plainObject.lname as string,
-						age: Number.parseInt(plainObject.age as string),
-						heightMetre:Number.parseFloat(plainObject.heightMetre as string),
-						weightKg:Number.parseFloat(plainObject.weightKg as string),
-						timestamp: Date.now() 
-					}
-					console.log(parsedBody);
-					const response = await fetch(form.action, {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Accept: "application/json",
-						},
-						body: JSON.stringify(parsedBody),
-					});
-					if (response.ok) {
-						completedDataCollection = true;
-					}
-				}}
-			>
-				<label for="fname">First name: </label><br />
-				<input type="text" id="fname" name="fname" /><br />
-				<label for="lname">Last name: </label><br />
-				<input type="text" id="lname" name="lname" />
-				<label for="fname">Age: </label><br />
-				<input type="number" id="age" name="age" /><br />
-				<label for="lname">Height (m): </label><br />
-				<input type="text" id="height" name="heightMetre" />
-				<label for="fname">Weight (kg): </label><br />
-				<input type="text" id="weight" name="weightKg" />
-				<input type="submit" value="Submit" />
-			</form>
 		</div>
+	<form action={`${backend}/data`}
+	onsubmit={async (event) => {
+		event.preventDefault();
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+		const plainObject = Object.fromEntries(formData.entries());
+		const body = JSON.stringify(plainObject);
+		console.log(body);
+		const parsedBody: TimeSeriesBMI = { 
+			fname: plainObject.fname as string, 
+			lname: plainObject.lname as string,
+			age: Number.parseInt(plainObject.age as string),
+			heightMetre:Number.parseFloat(plainObject.heightMetre as string),
+			weightKg:Number.parseFloat(plainObject.weightKg as string),
+			timestamp: Date.now() 
+		}
+		console.log(parsedBody);
+		const response = await fetch(form.action, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			body: JSON.stringify(parsedBody),
+		});
+		if (response.ok) {
+			completedDataCollection = true;
+		}
+	}}>
+		<div class="mb-3">
+			<label for="fname" class="form-label">First name: </label>
+			<input type="text" class="form-control" id="fname" name="fname" />
+		</div>
+		<div class="mb-3">
+			<label for="lname" class="form-label">Last name: </label>
+			<input type="text" class="form-control" id="lname" name="lname" />
+		</div>
+		<div class="mb-3">
+			<label for="age" class="form-label">Age: </label>
+			<input type="number" class="form-control" id="age" name="age" />
+		</div>
+		<div class="mb-3">
+			<label for="height" class="form-label">Height (m): </label>
+		<input type="text" class="form-control" id="height" name="heightMetre" />
+		</div>
+		<div class="mb-3">
+			<label for="weight" class="form-label">Weight (kg): </label>
+			<input type="text" class="form-control" id="weight" name="weightKg" />
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
 	{:else}
 		<canvas id="dashboard"></canvas>
 	{/if}

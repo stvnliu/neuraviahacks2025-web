@@ -26,26 +26,6 @@
   }
 </style>
 
-<div class="card">
-  {#if avatarUrl}
-    <img
-      src="{avatarUrl}"
-      alt="Avatar of {name}"
-      width="{size}"
-      height="{size}"
-      class="avatar w-{size} h-{size}"
-    />
-  {:else}
-    <div
-      class="avatar-placeholder w-{size} h-{size}"
-      aria-label="Avatar placeholder"
-    >
-      {initials}
-    </div>
-  {/if}
-
-  <h3 class="mt-3 text-lg font-medium text-gray-900 dark:text-gray-100">{name}</h3>
-  {#if role}
-    <p class="text-sm text-gray-500 dark:text-gray-400">{role}</p>
-  {/if}
+<div class="container">
+  
 </div>
