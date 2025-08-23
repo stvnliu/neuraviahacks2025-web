@@ -6,4 +6,13 @@ type TimeSeriesBMI = {
     weightKg: number,
     timestamp: number,
 }
-export { type TimeSeriesBMI };
+type FormInputData = {
+    fname: string,
+    lname: string,
+    age: number,
+    heightMetre: number,
+    weightKg: number,
+    timestamp: number,
+    situation: string,
+}
+export { type TimeSeriesBMI, type FormInputData };
