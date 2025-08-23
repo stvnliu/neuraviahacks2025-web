@@ -25,4 +25,20 @@ type UserData = {
   lastName: string;
   healthInfo: BMIData[];
 };
-export { type UserData, type BMIData, type TimeSeriesBMI, type FormInputData };
+type BMIAgeGroup = {
+  age_range: string;
+  category: string;
+  min: number;
+  max: number | null;
+};
+type BMIBaseline = {
+  bmi_table_flat: BMIAgeGroup[];
+};
+export {
+  type BMIBaseline,
+  type BMIAgeGroup,
+  type UserData,
+  type BMIData,
+  type TimeSeriesBMI,
+  type FormInputData,
+};

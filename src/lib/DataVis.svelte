@@ -3,12 +3,30 @@
 
   const IS_TESTING = true;
   import testData from "../test/data.json";
+  import bmiData from "../test/bmi.json";
   type LineGraphPoint = {
     x: string;
     y: number;
   };
+  const templateX = [1, 2, 3, 4, 5, 6, 7];
+  const generateLine = (
+    group: BMIAgeGroup
+  ): {
+    label: string;
+    data: number[];
+    fill: false;
+    borderColor: string;
+    tension: number;
+  } => {
+    return {
+      label: `${group.age_range} && ${group.category}`,
+      data: 
+    };
+  };
   let registeringNewCustomer = $state(false);
-  let completedDataCollection = $state(false);
+  let completedDataCollection = $state(true);
+  let customerAgeRange = "18-24";
+  const bmiBaseline: BMIBaseline = bmiData;
   type Data = {
     data: LineGraphPoint[];
   };
@@ -43,7 +61,11 @@
   let { type, span }: ViewProps = $props();
   // import { Chart } from "chart.js/auto";
   import { getContext, onMount } from "svelte";
-  import { type TimeSeriesBMI } from "./types";
+  import {
+    type BMIAgeGroup,
+    type BMIBaseline,
+    type TimeSeriesBMI,
+  } from "./types";
   import NewCustomer from "./NewCustomer.svelte";
   $effect(() => {
     getData(type, span).then((v) => {

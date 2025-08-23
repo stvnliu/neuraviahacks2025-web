@@ -1,8 +1,15 @@
 <script lang="ts">
   import { getContext, setContext } from "svelte";
   import type { UserData } from "./types";
+  import { getSHA256Hash } from "boring-webcrypto-sha256";
   let backend = getContext("backend-url-base");
   let profile: UserData = getContext("profile");
+  let currentTimeout: number | null = $state(null);
+  const invalidate = () => {};
+  const renew = () => {
+    if (currentTimeout != null) {
+    }
+  };
 </script>
 
 <div class="login-component">
@@ -39,6 +46,24 @@
         type="submit"
         onclick={(ev) => {
           // log in user TODO
+          fetch(`${backend}/auth/login`, {
+            method: "POST",
+            body: JSON.stringify({
+              username: (
+                document.getElementById("username") as HTMLInputElement
+              ).value,
+              passwordHash: getSHA256Hash(
+                (document.getElementById("password") as HTMLInputElement).value
+              ),
+            }),
+          })
+            .then((res) => res.json())
+            .then((v: { token: string; validUntil: number }) => {
+              if (currentTimeout != null) {
+                clearTimeout(currentTimeout as number);
+              }
+              setTimeout(invalidate, v.validUntil - Date.now());
+            });
         }}
         class="btn btn-primary">Log in</button
       >
