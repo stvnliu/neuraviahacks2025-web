@@ -8,7 +8,6 @@
   margin: auto;
 }
 .datavis-tool {
-  text-align: center;
   width: 100%;
   grid-column-start: 2;
   grid-column-end: 5;
