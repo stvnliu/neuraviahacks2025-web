@@ -1,262 +1,292 @@
 {
-  "bmi_table_flat": [
-    {
-      "age_range": "18-24",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "18-24",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "18-24",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.4
-    },
-    { "age_range": "18-24", "category": "Normal", "min": 18.5, "max": 24.9 },
-    {
-      "age_range": "18-24",
-      "category": "Overweight",
-      "min": 25.0,
-      "max": 29.9
-    },
-    {
-      "age_range": "18-24",
-      "category": "Obese Class I",
-      "min": 30.0,
-      "max": 34.9
-    },
-    {
-      "age_range": "18-24",
-      "category": "Obese Class II",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "18-24",
-      "category": "Obese Class III",
-      "min": 40.0,
-      "max": null
-    },
+	"bmi_table_flat": [
+		{
+			"age_range": "18-24",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "18-24",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "18-24",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.4
+		},
+		{
+			"age_range": "18-24",
+			"category": "Normal",
+			"min": 18.5,
+			"max": 24.9
+		},
+		{
+			"age_range": "18-24",
+			"category": "Overweight",
+			"min": 25.0,
+			"max": 29.9
+		},
+		{
+			"age_range": "18-24",
+			"category": "Obese Class I",
+			"min": 30.0,
+			"max": 34.9
+		},
+		{
+			"age_range": "18-24",
+			"category": "Obese Class II",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "18-24",
+			"category": "Obese Class III",
+			"min": 40.0,
+			"max": null
+		},
 
-    {
-      "age_range": "25-34",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "25-34",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "25-34",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.4
-    },
-    { "age_range": "25-34", "category": "Normal", "min": 18.5, "max": 24.9 },
-    {
-      "age_range": "25-34",
-      "category": "Overweight",
-      "min": 25.0,
-      "max": 29.9
-    },
-    {
-      "age_range": "25-34",
-      "category": "Obese Class I",
-      "min": 30.0,
-      "max": 34.9
-    },
-    {
-      "age_range": "25-34",
-      "category": "Obese Class II",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "25-34",
-      "category": "Obese Class III",
-      "min": 40.0,
-      "max": null
-    },
+		{
+			"age_range": "25-34",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "25-34",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "25-34",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.4
+		},
+		{
+			"age_range": "25-34",
+			"category": "Normal",
+			"min": 18.5,
+			"max": 24.9
+		},
+		{
+			"age_range": "25-34",
+			"category": "Overweight",
+			"min": 25.0,
+			"max": 29.9
+		},
+		{
+			"age_range": "25-34",
+			"category": "Obese Class I",
+			"min": 30.0,
+			"max": 34.9
+		},
+		{
+			"age_range": "25-34",
+			"category": "Obese Class II",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "25-34",
+			"category": "Obese Class III",
+			"min": 40.0,
+			"max": null
+		},
 
-    {
-      "age_range": "35-44",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "35-44",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "35-44",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.4
-    },
-    { "age_range": "35-44", "category": "Normal", "min": 18.5, "max": 24.9 },
-    {
-      "age_range": "35-44",
-      "category": "Overweight",
-      "min": 25.0,
-      "max": 29.9
-    },
-    {
-      "age_range": "35-44",
-      "category": "Obese Class I",
-      "min": 30.0,
-      "max": 34.9
-    },
-    {
-      "age_range": "35-44",
-      "category": "Obese Class II",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "35-44",
-      "category": "Obese Class III",
-      "min": 40.0,
-      "max": null
-    },
+		{
+			"age_range": "35-44",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "35-44",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "35-44",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.4
+		},
+		{
+			"age_range": "35-44",
+			"category": "Normal",
+			"min": 18.5,
+			"max": 24.9
+		},
+		{
+			"age_range": "35-44",
+			"category": "Overweight",
+			"min": 25.0,
+			"max": 29.9
+		},
+		{
+			"age_range": "35-44",
+			"category": "Obese Class I",
+			"min": 30.0,
+			"max": 34.9
+		},
+		{
+			"age_range": "35-44",
+			"category": "Obese Class II",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "35-44",
+			"category": "Obese Class III",
+			"min": 40.0,
+			"max": null
+		},
 
-    {
-      "age_range": "45-54",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "45-54",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "45-54",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.4
-    },
-    { "age_range": "45-54", "category": "Normal", "min": 18.5, "max": 24.9 },
-    {
-      "age_range": "45-54",
-      "category": "Overweight",
-      "min": 25.0,
-      "max": 29.9
-    },
-    {
-      "age_range": "45-54",
-      "category": "Obese Class I",
-      "min": 30.0,
-      "max": 34.9
-    },
-    {
-      "age_range": "45-54",
-      "category": "Obese Class II",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "45-54",
-      "category": "Obese Class III",
-      "min": 40.0,
-      "max": null
-    },
+		{
+			"age_range": "45-54",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "45-54",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "45-54",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.4
+		},
+		{
+			"age_range": "45-54",
+			"category": "Normal",
+			"min": 18.5,
+			"max": 24.9
+		},
+		{
+			"age_range": "45-54",
+			"category": "Overweight",
+			"min": 25.0,
+			"max": 29.9
+		},
+		{
+			"age_range": "45-54",
+			"category": "Obese Class I",
+			"min": 30.0,
+			"max": 34.9
+		},
+		{
+			"age_range": "45-54",
+			"category": "Obese Class II",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "45-54",
+			"category": "Obese Class III",
+			"min": 40.0,
+			"max": null
+		},
 
-    {
-      "age_range": "55-64",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "55-64",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "55-64",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.4
-    },
-    { "age_range": "55-64", "category": "Normal", "min": 18.5, "max": 24.9 },
-    {
-      "age_range": "55-64",
-      "category": "Overweight",
-      "min": 25.0,
-      "max": 29.9
-    },
-    {
-      "age_range": "55-64",
-      "category": "Obese Class I",
-      "min": 30.0,
-      "max": 34.9
-    },
-    {
-      "age_range": "55-64",
-      "category": "Obese Class II",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "55-64",
-      "category": "Obese Class III",
-      "min": 40.0,
-      "max": null
-    },
+		{
+			"age_range": "55-64",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "55-64",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "55-64",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.4
+		},
+		{
+			"age_range": "55-64",
+			"category": "Normal",
+			"min": 18.5,
+			"max": 24.9
+		},
+		{
+			"age_range": "55-64",
+			"category": "Overweight",
+			"min": 25.0,
+			"max": 29.9
+		},
+		{
+			"age_range": "55-64",
+			"category": "Obese Class I",
+			"min": 30.0,
+			"max": 34.9
+		},
+		{
+			"age_range": "55-64",
+			"category": "Obese Class II",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "55-64",
+			"category": "Obese Class III",
+			"min": 40.0,
+			"max": null
+		},
 
-    {
-      "age_range": "65+",
-      "category": "Severe Thinness",
-      "min": 0,
-      "max": 16.0
-    },
-    {
-      "age_range": "65+",
-      "category": "Moderate Thinness",
-      "min": 16.0,
-      "max": 16.9
-    },
-    {
-      "age_range": "65+",
-      "category": "Mild Thinness",
-      "min": 17.0,
-      "max": 18.9
-    },
-    { "age_range": "65+", "category": "Normal", "min": 23.0, "max": 29.0 },
-    { "age_range": "65+", "category": "Overweight", "min": 29.1, "max": 34.9 },
-    {
-      "age_range": "65+",
-      "category": "Obese Class I",
-      "min": 35.0,
-      "max": 39.9
-    },
-    {
-      "age_range": "65+",
-      "category": "Obese Class II",
-      "min": 40.0,
-      "max": 44.9
-    },
-    {
-      "age_range": "65+",
-      "category": "Obese Class III",
-      "min": 45.0,
-      "max": null
-    }
-  ]
+		{
+			"age_range": "65+",
+			"category": "Severe Thinness",
+			"min": 0,
+			"max": 16.0
+		},
+		{
+			"age_range": "65+",
+			"category": "Moderate Thinness",
+			"min": 16.0,
+			"max": 16.9
+		},
+		{
+			"age_range": "65+",
+			"category": "Mild Thinness",
+			"min": 17.0,
+			"max": 18.9
+		},
+		{ "age_range": "65+", "category": "Normal", "min": 23.0, "max": 29.0 },
+		{
+			"age_range": "65+",
+			"category": "Overweight",
+			"min": 29.1,
+			"max": 34.9
+		},
+		{
+			"age_range": "65+",
+			"category": "Obese Class I",
+			"min": 35.0,
+			"max": 39.9
+		},
+		{
+			"age_range": "65+",
+			"category": "Obese Class II",
+			"min": 40.0,
+			"max": 44.9
+		},
+		{
+			"age_range": "65+",
+			"category": "Obese Class III",
+			"min": 45.0,
+			"max": null
+		}
+	]
 }
