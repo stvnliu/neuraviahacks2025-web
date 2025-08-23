@@ -40,25 +40,28 @@
 	let { type, span }: ViewProps = $props();
 	// import { Chart } from "chart.js/auto";
 	import { getContext, onMount } from "svelte";
-	onMount(() => {
-		getData(type, span).then((v) => {
-			const ctx = document.getElementById("dashboard");
-			const chart = new Chart(ctx as HTMLCanvasElement, {
-				type: "line",
-				data: {
-					labels: v.xLabels,
-					datasets: [
-						{
-							label: type,
-							data: v.yLabels,
-							fill: false,
-							borderColor: "rgb(0, 0, 0)",
-							tension: 0.1,
-						},
-					],
-				},
+    import { type TimeSeriesBMI } from "./types";
+	$effect(() => {
+		if (completedDataCollection) {
+			getData(type, span).then((v) => {
+				const ctx = document.getElementById("dashboard");
+				const chart = new Chart(ctx as HTMLCanvasElement, {
+					type: "line",
+					data: {
+						labels: v.xLabels,
+						datasets: [
+							{
+								label: type,
+								data: v.yLabels,
+								fill: false,
+								borderColor: "rgb(0, 0, 0)",
+								tension: 0.1,
+							},
+						],
+					},
+				});
 			});
-		});
+		}
 	});
 </script>
 
@@ -68,8 +71,34 @@
 		<div>
 			<p>We need some more info.</p>
 			<form
-				onsubmit={(formData) => {
-					formData;
+				action={`${backend}/data`}
+				onsubmit={async (event) => {
+					event.preventDefault();
+					const form = event.currentTarget;
+					const formData = new FormData(form);
+					const plainObject = Object.fromEntries(formData.entries());
+					const body = JSON.stringify(plainObject);
+					console.log(body);
+					const parsedBody: TimeSeriesBMI = { 
+						fname: plainObject.fname as string, 
+						lname: plainObject.lname as string,
+						age: Number.parseInt(plainObject.age as string),
+						heightMetre:Number.parseFloat(plainObject.heightMetre as string),
+						weightKg:Number.parseFloat(plainObject.weightKg as string),
+						timestamp: Date.now() 
+					}
+					console.log(parsedBody);
+					const response = await fetch(form.action, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+						},
+						body: JSON.stringify(parsedBody),
+					});
+					if (response.ok) {
+						completedDataCollection = true;
+					}
 				}}
 			>
 				<label for="fname">First name: </label><br />
@@ -79,9 +108,9 @@
 				<label for="fname">Age: </label><br />
 				<input type="number" id="age" name="age" /><br />
 				<label for="lname">Height (m): </label><br />
-				<input type="text" id="height" name="height" />
+				<input type="text" id="height" name="heightMetre" />
 				<label for="fname">Weight (kg): </label><br />
-				<input type="text" id="weight" name="weight" />
+				<input type="text" id="weight" name="weightKg" />
 				<input type="submit" value="Submit" />
 			</form>
 		</div>
