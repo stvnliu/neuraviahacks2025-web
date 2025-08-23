@@ -3,7 +3,9 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/">HealthWatch BMI_VIS</a>
+		<a class="navbar-brand" href="/"
+			><img height="45px" src="/logo.png" /> HealthWatch BMI_VIS</a
+		>
 		<button
 			class="navbar-toggler"
 			type="button"
@@ -22,11 +24,11 @@
 						class="nav-link active"
 						aria-current="page"
 						href="https://github.com/stvnliu/neuraviahacks2025"
-						>See the source code -></a
+						>See the source code &rarr;</a
 					>
 				</li>
 			</ul>
-			<form class="d-flex" role="search">
+			<!-- <form class="d-flex" role="search">
 				<input
 					class="form-control me-2"
 					type="search"
@@ -36,7 +38,7 @@
 				<button class="btn btn-outline-success" type="submit"
 					>Search</button
 				>
-			</form>
+			</form> -->
 		</div>
 	</div>
 </nav>

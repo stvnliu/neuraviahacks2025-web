@@ -71,6 +71,9 @@
 	import Profile from "./Profile.svelte";
 	$effect(() => {
 		getData(type, span).then((v) => {
+			if (profile === null) {
+				return;
+			}
 			const ctx = document.getElementById("dashboard");
 			const tool = new DataVisTool();
 			const line: Line = {
@@ -113,11 +116,8 @@
 			></NewCustomer>
 		{:else}
 			<div>
-				<p>You must log in to see your dashboard!</p>
-				<p>
-					If you do not have an account, register with the Profile
-					widget
-				</p>
+				<p>Start recording your health & fitness progress today!</p>
+				<p>&larr; Register an account</p>
 			</div>
 		{/if}
 	{:else}

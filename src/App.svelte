@@ -4,6 +4,7 @@
 	import Nav from "./lib/Nav.svelte";
 	import Profile from "./lib/Profile.svelte";
 	import type { BMIData, UserData } from "./lib/types";
+	import Footer from "./lib/Footer.svelte";
 	const IS_TESTING = true;
 	function generateTestingData(length: number): BMIData[] {
 		let data: BMIData[] = [];
@@ -29,13 +30,17 @@
 
 		return data;
 	}
-	const TESTING_USER: UserData = {
-		firstName: "Testing",
-		lastName: "User",
-		healthInfo: generateTestingData(12),
-	};
 	setContext("backend-url-base", "http://localhost:8000");
-	setContext("profile", IS_TESTING ? TESTING_USER : null);
+	setContext(
+		"profile",
+		IS_TESTING
+			? {
+					firstName: "Testing",
+					lastName: "User",
+					healthInfo: generateTestingData(12),
+				}
+			: null
+	);
 </script>
 
 <main>
@@ -44,6 +49,7 @@
 		<Profile />
 		<DataVis type="Your BMI" span="weekly" />
 	</div>
+	<Footer />
 </main>
 
 <style>

@@ -40,10 +40,20 @@ class DataVisTool {
 		templateX: string[],
 		userLine: Line
 	): Line[] {
+		const colors = [
+			"rgb(230, 25, 75)", // Red
+			"rgb(60, 180, 75)", // Green
+			"rgb(0, 130, 200)", // Blue
+			"rgb(245, 130, 48)", // Orange
+			"rgb(145, 30, 180)", // Purple
+			"rgb(70, 240, 240)", // Cyan
+			"rgb(240, 50, 230)", // Magenta
+			"rgb(210, 245, 60)", // Lime
+		];
+
 		let { max, min } = this.collectExtremes(userLine);
 		let datasets: Line[] = [];
-		let redness: number = 255;
-		const rednessStep: number = 16;
+		let index = 0;
 		groups.forEach((group) => {
 			if (group.min > min) {
 				// the user has a BMI less than this data group's minimum; line shown;
@@ -51,20 +61,20 @@ class DataVisTool {
 					label: `min ${group.category} BMI for people aged ${group.age_range}`,
 					data: templateX.map((_) => group.min),
 					fill: false,
-					borderColor: "rgb(255, 0, 0)",
+					borderColor: colors[index],
 					tension: 0.1,
 				});
+				index++;
 			}
-			redness -= rednessStep;
 			if (group.max !== null && group.max < max + 5) {
 				datasets.push({
 					label: `max ${group.category} BMI for people aged ${group.age_range}`,
 					data: templateX.map((_) => group.max as number),
 					fill: false,
-					borderColor: `rgb(${redness}, 0, 0)`,
+					borderColor: colors[index],
 					tension: 0.1,
 				});
-				redness -= rednessStep;
+				index++;
 			}
 		});
 		return datasets;
