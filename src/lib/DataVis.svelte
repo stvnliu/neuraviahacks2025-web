@@ -20,7 +20,8 @@
 		"November",
 		"December",
 	];
-	let profile: UserData = getContext("profile");
+	let profile: UserData | null = $state(null);
+	profileStore.subscribe((p) => (profile = p));
 	let registeringNewCustomer = $state(false);
 	let completedDataCollection = $state(false);
 	let customerAgeRange = "18-24";
@@ -69,9 +70,10 @@
 	import DataVisTool from "./dataVisTools";
 	import { get } from "svelte/store";
 	import Profile from "./Profile.svelte";
+	import { profileStore } from "./stores";
 	$effect(() => {
 		getData(type, span).then((v) => {
-			if (profile === null) {
+			if (profile === null || profile === undefined) {
 				return;
 			}
 			const ctx = document.getElementById("dashboard");

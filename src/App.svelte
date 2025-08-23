@@ -5,7 +5,8 @@
 	import Profile from "./lib/Profile.svelte";
 	import type { BMIData, UserData } from "./lib/types";
 	import Footer from "./lib/Footer.svelte";
-	const IS_TESTING = true;
+	import { profileStore } from "./lib/stores";
+	const IS_TESTING = false;
 	function generateTestingData(length: number): BMIData[] {
 		let data: BMIData[] = [];
 		let baseHeight = 1.7;
@@ -31,8 +32,7 @@
 		return data;
 	}
 	setContext("backend-url-base", "http://localhost:8000");
-	setContext(
-		"profile",
+	profileStore.set(
 		IS_TESTING
 			? {
 					firstName: "Testing",

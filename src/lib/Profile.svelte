@@ -2,8 +2,12 @@
 	import { getContext } from "svelte";
 	import type { UserData } from "./types";
 	import Login from "./Login.svelte";
+	import { profileStore } from "./stores";
 
-	let userContext: UserData = getContext("profile");
+	let userContext: UserData | null = $state(null);
+	profileStore.subscribe((user) => {
+		userContext = user;
+	});
 </script>
 
 <div class="container">
