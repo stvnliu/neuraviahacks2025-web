@@ -5,6 +5,7 @@
 	import { profileStore } from "./stores";
 
 	let userContext: UserData | null = $state(null);
+	let backend = getContext("backend-url-base");
 	profileStore.subscribe((user) => {
 		userContext = user;
 	});
@@ -23,9 +24,42 @@
 				You currently have {userContext.healthInfo.length} records securely
 				stored in our system
 			</p>
+			<p>Logged in with {userContext.token}</p>
 
 			<h3>Record a new data point</h3>
-			<form>
+			<form
+				onsubmit={(ev) => {
+					ev.preventDefault();
+					const height = Number.parseFloat(
+						(document.getElementById("height") as HTMLInputElement)
+							.value
+					);
+					const weight = Number.parseFloat(
+						(document.getElementById("weight") as HTMLInputElement)
+							.value
+					);
+					fetch(
+						`${backend}/data/upload?token=${userContext?.token}`,
+						{
+							mode: "cors",
+							method: "POST",
+							headers: {
+								"Access-Control-Allow-Origin": "*",
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({
+								UserName: userContext?.userName,
+								Height: height,
+								Weight: weight,
+								Timestamp: new Date()
+									.toISOString()
+									.slice(0, 19)
+									.replace("T", " "),
+							}),
+						}
+					);
+				}}
+			>
 				<div class="mb-3">
 					<input
 						type="text"

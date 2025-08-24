@@ -63,6 +63,8 @@
 		return { xLabels: xs, yLabels: ys };
 	}
 	import { Chart } from "chart.js/auto";
+	import { digestMessage } from "./crypto";
+	import { setStore } from "./fetchTools";
 	type ViewProps = {
 		type: string;
 		span: string;
@@ -121,46 +123,121 @@
 				<form
 					onsubmit={(ev) => {
 						ev.preventDefault();
+						const username = (
+							document.getElementById(
+								"username-register"
+							) as HTMLInputElement
+						).value;
+						const password = (
+							document.getElementById(
+								"password-register"
+							) as HTMLInputElement
+						).value;
+						const passwordRepeat = (
+							document.getElementById(
+								"password-register-repeat"
+							) as HTMLInputElement
+						).value;
+						const firstName = (
+							document.getElementById(
+								"firstname-register"
+							) as HTMLInputElement
+						).value;
+						const lastName = (
+							document.getElementById(
+								"lastname-register"
+							) as HTMLInputElement
+						).value;
+						const age = (
+							document.getElementById(
+								"age-register"
+							) as HTMLInputElement
+						).value;
+						digestMessage(password).then((p) => {
+							if (password == passwordRepeat) {
+								const submitData = {
+									UserName: username,
+									PasswordHash: p,
+									FirstName: firstName,
+									LastName: lastName,
+									Age: Number.parseInt(age),
+								};
+								fetch(`${backend}/auth/register`, {
+									method: "POST",
+									mode: "cors",
+									headers: {
+										"Access-Control-Allow-Origin": "*",
+										"Content-Type": "application/json",
+									},
+									body: JSON.stringify(submitData),
+								}).then((response) => {
+									if (response.ok) {
+										fetch(
+											`${backend}/auth/login?username=${username}&password_hash=${p}`,
+											{
+												method: "POST",
+												mode: "cors",
+												headers: {
+													"Access-Control-Allow-Origin":
+														"*",
+												},
+											}
+										)
+											.then((response) => response.json())
+											.then((v) => setStore(v));
+									}
+								});
+							}
+						});
 					}}
 				>
 					<input
 						type="text"
 						class="form-control"
-						id="username"
-						name="username"
+						id="username-register"
+						name="username-register"
 						placeholder="Username"
 					/>
 					<div class="input-group">
 						<input
 							type="password"
 							class="form-control"
-							id="password"
-							name="password"
+							id="password-register"
+							name="password-register"
 							placeholder="Password"
 						/><input
 							type="password"
 							class="form-control"
-							id="password-repeat"
-							name="password-repeat"
+							id="password-register-repeat"
+							name="password-register-repeat"
 							placeholder="Repeat password"
 						/>
 					</div>
 					<div class="input-group">
 						<input
-							type="password"
+							type="text"
 							class="form-control"
-							id="firstname"
-							name="firstname"
+							id="firstname-register"
+							name="firstname-register"
 							placeholder="First Name"
 						/><input
-							type="password"
+							type="text"
 							class="form-control"
-							id="lastname"
-							name="lastname"
+							id="lastname-register"
+							name="lastname-register"
 							placeholder="Last Name"
 						/>
+						<input
+							type="number"
+							class="form-control"
+							id="age-register"
+							name="age-register"
+							placeholder="Your age"
+						/>
 					</div>
-					<button>Create an account</button>
+					<button type="submit" class="btn btn-primary"
+						>Create an account</button
+					>
 				</form>
 			</div>
 		{/if}

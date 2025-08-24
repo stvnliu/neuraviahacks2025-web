@@ -21,6 +21,8 @@ type BMIData = {
 	timestamp: number;
 };
 type UserData = {
+	userName: string;
+	token: string;
 	firstName: string;
 	lastName: string;
 	healthInfo: BMIData[];

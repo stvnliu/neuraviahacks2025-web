@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, setContext } from "svelte";
 	import type { UserData } from "./types";
-	import { getHealthInfo } from "./fetchTools";
+	import { getHealthInfo, setStore } from "./fetchTools";
 	import { digestMessage } from "./crypto";
 	import { profileStore } from "./stores";
 	let backend = getContext("backend-url-base");
@@ -45,22 +45,7 @@
 					}
 				)
 					.then((res) => res.json())
-					.then((v) => {
-						let value: {
-							username: string;
-							first_name: string;
-							last_name: string;
-						} = v;
-						console.log(value);
-
-						let health = getHealthInfo(value.username);
-						let userData: UserData = {
-							firstName: value.first_name,
-							lastName: value.last_name,
-							healthInfo: health,
-						};
-						profileStore.set(userData);
-					});
+					.then((v) => setStore(v));
 			});
 		}}
 	>
