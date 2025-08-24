@@ -28,7 +28,7 @@ function setStore(v: any) {
 	} = v;
 	console.log(value);
 
-	getHealthInfo(value.username, value.token, "http://localhost:8000").then(
+	getHealthInfo(value.username, value.token, "https://dev.stvnliu.me").then(
 		(health) => {
 			let userData: UserData = {
 				userName: value.username,
