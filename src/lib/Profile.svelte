@@ -3,6 +3,7 @@
 	import type { UserData } from "./types";
 	import Login from "./Login.svelte";
 	import { profileStore } from "./stores";
+	import { setStore } from "./fetchTools";
 
 	let userContext: UserData | null = $state(null);
 	let backend = getContext("backend-url-base");
@@ -63,18 +64,17 @@
 						.then((res) => res.ok)
 						.then((ok) => {
 							if (ok) {
-								profileStore.update((v) => {
-									if (v == null) {
-										console.error("profile is null");
-										return null;
-									}
-									let new_profile: UserData = v;
-									new_profile.healthInfo.push({
-										Height: height,
-										Weight: weight,
-										Timestamp: datetime.getTime(),
-									});
-									return new_profile;
+								if (userContext === null) {
+									console.error("bad context");
+									return;
+								}
+
+								setStore({
+									username: userContext.userName,
+									first_name: userContext.firstName,
+									last_name: userContext.lastName,
+									token: userContext.token,
+									age: userContext.age,
 								});
 							}
 						});
@@ -86,10 +86,10 @@
 						class="form-control"
 						id="height"
 						name="height"
-						placeholder="Height (cm)"
+						placeholder="Height (m)"
 					/>
 					<input
-						type="number"
+						type="text"
 						class="form-control"
 						id="weight"
 						name="weight"

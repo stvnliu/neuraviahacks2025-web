@@ -16,7 +16,7 @@ async function getHealthInfo(
 			}
 		)
 	).json();
-	return result;
+	return result.slice(-12, result.length);
 }
 function setStore(v: any) {
 	let value: {
