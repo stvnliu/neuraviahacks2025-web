@@ -62,7 +62,6 @@
 						profileStore.set(userData);
 					});
 			});
-			// log in user TODO
 		}}
 	>
 		<div class="mb-3">
@@ -81,13 +80,6 @@
 				placeholder="Password"
 			/>
 			<button type="submit" class="btn btn-primary">Log in</button>
-			<button
-				type="submit"
-				onclick={(ev) => {
-					// register new user TODO
-				}}
-				class="btn btn-primary">Create account</button
-			>
 		</div>
 	</form>
 </div>

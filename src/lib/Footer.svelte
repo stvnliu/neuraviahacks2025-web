@@ -18,16 +18,16 @@
 				<h5>Contact Us via Email!</h5>
 				<ul class="list-unstyled">
 					<li>
-						<a href="mailto://z.liu@outlook.com.gr">Steven</a>
+						<a href="mailto:z.liu@outlook.com.gr">Steven</a>
 					</li>
 					<li>
-						<a href="mailto://example.com">Saloni</a>
+						<a href="mailto:example.com">Saloni</a>
 					</li>
 					<li>
-						<a href="mailto://z.liu@outlook.com.gr">Jan</a>
+						<a href="mailto:example.com">Jan</a>
 					</li>
 					<li>
-						<a href="mailto://z.liu@outlook.com.gr">Vilius</a>
+						<a href="mailto:example.com">Vilius</a>
 					</li>
 				</ul>
 			</div>

@@ -47,7 +47,7 @@
 	<Nav />
 	<div class="app-container">
 		<Profile />
-		<DataVis type="Your BMI" span="weekly" />
+		<DataVis />
 	</div>
 	<Footer />
 </main>

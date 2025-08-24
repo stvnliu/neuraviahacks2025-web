@@ -2,6 +2,16 @@
 	const IS_TESTING = true;
 	import testData from "../test/data.json";
 	import bmiData from "../test/bmi.json";
+	import { getContext, onMount } from "svelte";
+	import {
+		type BMIAgeGroup,
+		type BMIBaseline,
+		type Line,
+		type UserData,
+	} from "./types";
+	import NewCustomer from "./NewCustomer.svelte";
+	import DataVisTool from "./dataVisTools";
+	import { profileStore } from "./stores";
 	type LineGraphPoint = {
 		x: string;
 		y: number;
@@ -57,52 +67,40 @@
 		type: string;
 		span: string;
 	};
-	let { type, span }: ViewProps = $props();
 	// import { Chart } from "chart.js/auto";
-	import { getContext, onMount } from "svelte";
-	import {
-		type BMIAgeGroup,
-		type BMIBaseline,
-		type Line,
-		type UserData,
-	} from "./types";
-	import NewCustomer from "./NewCustomer.svelte";
-	import DataVisTool from "./dataVisTools";
-	import { get } from "svelte/store";
-	import Profile from "./Profile.svelte";
-	import { profileStore } from "./stores";
-	$effect(() => {
-		getData(type, span).then((v) => {
-			if (profile === null || profile === undefined) {
-				return;
-			}
-			const ctx = document.getElementById("dashboard");
-			const tool = new DataVisTool();
-			const line: Line = {
-				label: "My BMI",
-				fill: false,
-				borderColor: "black",
-				data: tool.metadataToBMIs(profile),
-				tension: 0.1,
-			};
-			const set = [line].concat(
-				tool.generateLines(
-					bmiData.bmi_table_flat.filter(
-						(v) => v.age_range === customerAgeRange
-					),
-					templateX,
-					line
-				)
-			);
-			console.log(set);
 
-			const chart = new Chart(ctx as HTMLCanvasElement, {
-				type: "line",
-				data: {
-					labels: templateX,
-					datasets: set,
-				},
-			});
+	$effect(() => {
+		if (profile === null || profile === undefined) {
+			console.log("no profile");
+
+			return;
+		}
+		const ctx = document.getElementById("dashboard");
+		const tool = new DataVisTool();
+		const line: Line = {
+			label: "My BMI",
+			fill: false,
+			borderColor: "black",
+			data: tool.metadataToBMIs(profile),
+			tension: 0.1,
+		};
+		const set = [line].concat(
+			tool.generateLines(
+				bmiData.bmi_table_flat.filter(
+					(v) => v.age_range === customerAgeRange
+				),
+				templateX,
+				line
+			)
+		);
+		console.log(set);
+
+		const chart = new Chart(ctx as HTMLCanvasElement, {
+			type: "line",
+			data: {
+				labels: templateX,
+				datasets: set,
+			},
 		});
 	});
 </script>
@@ -119,7 +117,51 @@
 		{:else}
 			<div>
 				<p>Start recording your health & fitness progress today!</p>
-				<p>&larr; Register an account</p>
+				<p>&darr; Register an account</p>
+				<form
+					onsubmit={(ev) => {
+						ev.preventDefault();
+					}}
+				>
+					<input
+						type="text"
+						class="form-control"
+						id="username"
+						name="username"
+						placeholder="Username"
+					/>
+					<div class="input-group">
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							name="password"
+							placeholder="Password"
+						/><input
+							type="password"
+							class="form-control"
+							id="password-repeat"
+							name="password-repeat"
+							placeholder="Repeat password"
+						/>
+					</div>
+					<div class="input-group">
+						<input
+							type="password"
+							class="form-control"
+							id="firstname"
+							name="firstname"
+							placeholder="First Name"
+						/><input
+							type="password"
+							class="form-control"
+							id="lastname"
+							name="lastname"
+							placeholder="Last Name"
+						/>
+					</div>
+					<button>Create an account</button>
+				</form>
 			</div>
 		{/if}
 	{:else}

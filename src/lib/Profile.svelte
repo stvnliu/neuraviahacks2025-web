@@ -23,6 +23,28 @@
 				You currently have {userContext.healthInfo.length} records securely
 				stored in our system
 			</p>
+
+			<h3>Record a new data point</h3>
+			<form>
+				<div class="mb-3">
+					<input
+						type="text"
+						class="form-control"
+						id="height"
+						name="height"
+						placeholder="Height (cm)"
+					/>
+					<input
+						type="password"
+						class="form-control"
+						id="weight"
+						name="weight"
+						placeholder="Weight (kg)"
+					/>
+					<button type="submit" class="btn btn-primary">Upload</button
+					>
+				</div>
+			</form>
 		</div>
 	{/if}
 </div>
