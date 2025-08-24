@@ -21,9 +21,9 @@
 			baseWeight = baseWeight + wVariation * Math.random();
 			currentDate.setUTCMonth(currentDate.getUTCMonth() + 1);
 			data.push({
-				heightMetre: baseHeight,
-				weightKg: baseWeight,
-				timestamp: currentDate.getTime(),
+				Height: baseHeight,
+				Weight: baseWeight,
+				Timestamp: currentDate.getTime(),
 			});
 			index++;
 		}
@@ -35,9 +35,12 @@
 	profileStore.set(
 		IS_TESTING
 			? {
+					userName: "test",
+					token: "joe",
 					firstName: "Testing",
 					lastName: "User",
 					healthInfo: generateTestingData(12),
+					age: 18,
 				}
 			: null
 	);

@@ -3,9 +3,7 @@ import type { BMIAgeGroup, Line, UserData } from "./types";
 
 class DataVisTool {
 	metadataToBMIs(p: UserData): number[] {
-		return p.healthInfo.map(
-			(info) => info.weightKg / info.heightMetre ** 2
-		);
+		return p.healthInfo.map((info) => info.Weight / info.Height ** 2);
 	}
 	collectExtremes(l: Line): { max: number; min: number } {
 		let index = 0;

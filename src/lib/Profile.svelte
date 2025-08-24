@@ -28,7 +28,7 @@
 
 			<h3>Record a new data point</h3>
 			<form
-				onsubmit={(ev) => {
+				onsubmit={async (ev) => {
 					ev.preventDefault();
 					const height = Number.parseFloat(
 						(document.getElementById("height") as HTMLInputElement)
@@ -38,6 +38,8 @@
 						(document.getElementById("weight") as HTMLInputElement)
 							.value
 					);
+					const datetime = new Date();
+
 					fetch(
 						`${backend}/data/upload?token=${userContext?.token}`,
 						{
@@ -51,13 +53,31 @@
 								UserName: userContext?.userName,
 								Height: height,
 								Weight: weight,
-								Timestamp: new Date()
+								Timestamp: datetime
 									.toISOString()
 									.slice(0, 19)
 									.replace("T", " "),
 							}),
 						}
-					);
+					)
+						.then((res) => res.ok)
+						.then((ok) => {
+							if (ok) {
+								profileStore.update((v) => {
+									if (v == null) {
+										console.error("profile is null");
+										return null;
+									}
+									let new_profile: UserData = v;
+									new_profile.healthInfo.push({
+										Height: height,
+										Weight: weight,
+										Timestamp: datetime.getTime(),
+									});
+									return new_profile;
+								});
+							}
+						});
 				}}
 			>
 				<div class="mb-3">
@@ -69,7 +89,7 @@
 						placeholder="Height (cm)"
 					/>
 					<input
-						type="password"
+						type="number"
 						class="form-control"
 						id="weight"
 						name="weight"

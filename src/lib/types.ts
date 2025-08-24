@@ -1,11 +1,3 @@
-type TimeSeriesBMI = {
-	fname: string;
-	lname: string;
-	age: number;
-	heightMetre: number;
-	weightKg: number;
-	timestamp: number;
-};
 type FormInputData = {
 	fname: string;
 	lname: string;
@@ -16,15 +8,16 @@ type FormInputData = {
 	situation: string;
 };
 type BMIData = {
-	heightMetre: number;
-	weightKg: number;
-	timestamp: number;
+	Height: number;
+	Weight: number;
+	Timestamp: number;
 };
 type UserData = {
 	userName: string;
 	token: string;
 	firstName: string;
 	lastName: string;
+	age: number;
 	healthInfo: BMIData[];
 };
 type BMIAgeGroup = {
@@ -49,6 +42,5 @@ export {
 	type BMIAgeGroup,
 	type UserData,
 	type BMIData,
-	type TimeSeriesBMI,
 	type FormInputData,
 };
